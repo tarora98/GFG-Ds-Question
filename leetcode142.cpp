@@ -47,9 +47,11 @@ class Solution {
             ListNode *slow=head;
             ListNode *fast=head;
             ListNode *pos=head;
+            int distancePosition=0;
             while(fast!=nullptr && fast->next!=nullptr){
                 slow=slow->next;
                 fast=fast->next->next;
+                distancePosition++;
                 if(slow==fast){
                     break;
                 }
@@ -58,18 +60,21 @@ class Solution {
                 return nullptr;
             }
             slow=head;
-            int count=0;
+            int m=0;
+            int x=0;
             ListNode *node=fast;
             while(slow!=fast){
                 if(fast==node){
-                    count++; // m
+                    m++; // m
                 }
+                x++;//  x distance
                 slow=slow->next;
                 fast=fast->next;
             }
+            // calcaute Y
+            int y=distancePosition-x;// x=z+(y+z)*(m-1);
             return slow=fast;
             
             
         }
     };
-    ///count==m count which is m
